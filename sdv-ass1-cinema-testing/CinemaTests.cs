@@ -12,6 +12,7 @@ namespace sdv_ass1_cinema_testing
         [TestFixture]
         public class TicketPriceController
         {
+            //Time is in 24 hours to account for am/pm
             [TestCase(1, "Adult", "Saturday", 3, 15.00)]
             [TestCase(2, "Adult", "Monday", 12, 30.00)]
             [TestCase(1, "Adult", "Wednesday,", 18, -1)]
@@ -67,7 +68,7 @@ namespace sdv_ass1_cinema_testing
             [TestCase(3, "Adult", "Tuesday", 42.00)]
             [TestCase(0, "Adult", "Friday", -1)]
             [TestCase(6, "Adult", "Tuesday", 84.00)]
-            [TestCase(28, "Adult", "Friday", -1)] //work party
+            [TestCase(28, "Adult", "Friday", -1)] //work party, too bad they didn't get a discount
             public void Adult_Tuesday(int pr_quantity, string pr_person, string pr_day, decimal expected)
             {
                 decimal ticket_price = 14.00M;
@@ -153,8 +154,7 @@ namespace sdv_ass1_cinema_testing
             [TestCase(2, "Adult", "Monday", -1)]
             [TestCase(1, "Adult", "Wednesday,", -1)]
             [TestCase(2, "Child", "Sunday", -1)]
-            [TestCase(3, "Adult", "Thursday", 64.50)]
-            [TestCase(0, "Adult", "Friday", -1)]
+            [TestCase(0, "Adult", "Thursday", -1)]
             [TestCase(6, "Adult", "Thursday", 129.00)]
             [TestCase(28, "Adult", "Friday", -1)]
             public void Chick_Flick_Thursday(int pr_quantity, string pr_person, string pr_day, decimal expected)
